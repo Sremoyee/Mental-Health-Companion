@@ -10,6 +10,36 @@ It helps users reflect on their **mood, stress, sleep, energy, and social connec
 
 ---
 
+📊 Wellness Score Formula
+
+The app calculates wellness as:
+
+Wellness Score
+=
+Mood
++
+(
+10
+−
+Stress
+)
++
+Sleep
++
+Energy
++
+Social
+5
+Wellness Score=
+5
+Mood+(10−Stress)+Sleep+Energy+Social
+	​
+
+
+Higher scores indicate better balance across the five dimensions.
+
+Personalized tips are generated based on low or high values in each metric.
+
 ## 🎥 Demo  
 
 
