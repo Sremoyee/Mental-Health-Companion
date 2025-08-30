@@ -13,7 +13,7 @@ class ReportScreen(Screen):
     pass
 
 # Main App Class
-class design(App):
+class Wellness App(App):
     def build(self):
         # Kivy will automatically load the 'wellness.kv' file as the root widget.
         pass
@@ -130,4 +130,4 @@ class design(App):
         self.root.current = 'welcome'
 
 if __name__ == '__main__':
-    design().run()
+    Wellness App().run()
