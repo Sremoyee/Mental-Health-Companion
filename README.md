@@ -28,12 +28,9 @@ Sleep
 +
 Energy
 +
-Social
+Social/
 5
-Wellness Score=
-5
-Mood+(10−Stress)+Sleep+Energy+Social
-	​
+
 
 
 Higher scores indicate better balance across the five dimensions.
