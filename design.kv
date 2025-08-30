@@ -1,0 +1,227 @@
+#:kivy 2.1.0
+#:import FadeTransition kivy.uix.screenmanager.FadeTransition
+
+ScreenManager:
+    transition: FadeTransition(duration=0.5)
+    WelcomeScreen:
+        name: 'welcome'
+    CheckinScreen:
+        name: 'checkin'
+    ReportScreen:
+        name: 'report'
+
+<StyledButton@Button>:
+    font_size: '18sp'
+    background_color: 0, 0, 0, 0
+    background_normal: ''
+    background_down: ''
+    size_hint_y: None
+    height: '48dp'
+    canvas.before:
+        Color:
+            rgba: (0.2, 0.5, 0.7, 1) if self.state == 'normal' else (0.1, 0.4, 0.6, 1)
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [self.height / 2]
+
+<WelcomeScreen>:
+    canvas.before:
+        Color:
+            rgba: (25/255, 25/255, 80/255, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        orientation: 'vertical'
+        padding: '30dp'
+        spacing: '20dp'
+        Label:
+            text: "Mindful Moments"
+            font_size: '36sp'
+            bold: True
+            color: 1, 1, 1, 0.9
+        Label:
+            text: "Take a moment to check in with yourself."
+            font_size: '18sp'
+            color: 1, 1, 1, 0.7
+            text_size: self.width, None
+            halign: 'center'
+        Widget:
+        StyledButton:
+            text: "Start Check-in"
+            on_press: app.root.current = 'checkin'
+            pos_hint: {'center_x': 0.5}
+
+<CheckinScreen>:
+    canvas.before:
+        Color:
+            rgba: (25/255, 25/255, 80/255, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        orientation: 'vertical'
+        padding: '20dp'
+        spacing: '15dp'
+        
+        Label:
+            text: "How are you feeling today?"
+            font_size: '22sp'
+            bold: True
+            size_hint_y: None
+            height: self.texture_size[1]
+        
+        ScrollView:
+            do_scroll_x: False
+            GridLayout:
+                cols: 1
+                spacing: '10dp'
+                size_hint_y: None
+                height: self.minimum_height
+
+                # --- Mood ---
+                Label:
+                    text: "Mood"
+                    halign: 'left'
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: '24dp'
+                BoxLayout:
+                    size_hint_y: None
+                    height: '48dp'
+                    Slider:
+                        id: mood_slider
+                        min: 0
+                        max: 10
+                        step: 1
+                        value: 5
+                        on_value: mood_value.text = str(int(self.value))
+                    Label:
+                        id: mood_value
+                        text: str(int(mood_slider.value))
+                        size_hint_x: 0.2
+                
+                # --- Stress ---
+                Label:
+                    text: "Stress"
+                    halign: 'left'
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: '24dp'
+                BoxLayout:
+                    size_hint_y: None
+                    height: '48dp'
+                    Slider:
+                        id: stress_slider
+                        min: 0
+                        max: 10
+                        step: 1
+                        value: 5
+                        on_value: stress_value.text = str(int(self.value))
+                    Label:
+                        id: stress_value
+                        text: str(int(stress_slider.value))
+                        size_hint_x: 0.2
+
+                # --- Sleep Quality ---
+                Label:
+                    text: "Sleep Quality"
+                    halign: 'left'
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: '24dp'
+                BoxLayout:
+                    size_hint_y: None
+                    height: '48dp'
+                    Slider:
+                        id: sleep_slider
+                        min: 0
+                        max: 10
+                        step: 1
+                        value: 5
+                        on_value: sleep_value.text = str(int(self.value))
+                    Label:
+                        id: sleep_value
+                        text: str(int(sleep_slider.value))
+                        size_hint_x: 0.2
+                
+                # --- Energy Level ---
+                Label:
+                    text: "Energy Level"
+                    halign: 'left'
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: '24dp'
+                BoxLayout:
+                    size_hint_y: None
+                    height: '48dp'
+                    Slider:
+                        id: energy_slider
+                        min: 0
+                        max: 10
+                        step: 1
+                        value: 5
+                        on_value: energy_value.text = str(int(self.value))
+                    Label:
+                        id: energy_value
+                        text: str(int(energy_slider.value))
+                        size_hint_x: 0.2
+
+                # --- Social Connection ---
+                Label:
+                    text: "Social Connection"
+                    halign: 'left'
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: '24dp'
+                BoxLayout:
+                    size_hint_y: None
+                    height: '48dp'
+                    Slider:
+                        id: social_slider
+                        min: 0
+                        max: 10
+                        step: 1
+                        value: 5
+                        on_value: social_value.text = str(int(self.value))
+                    Label:
+                        id: social_value
+                        text: str(int(social_slider.value))
+                        size_hint_x: 0.2
+
+        StyledButton:
+            text: "View My Report"
+            on_press: app.calculate_wellness()
+
+<ReportScreen>:
+    canvas.before:
+        Color:
+            rgba: (25/255, 25/255, 80/255, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        orientation: 'vertical'
+        padding: '20dp'
+        spacing: '15dp'
+        Label:
+            text: "Your Report"
+            font_size: '24sp'
+            bold: True
+            size_hint_y: None
+            height: self.texture_size[1]
+        ScrollView:
+            do_scroll_x: False
+            Label:
+                id: result_label
+                text: ''
+                font_size: '16sp'
+                size_hint_y: None
+                height: self.texture_size[1]  
+                text_size: self.width, None
+                padding: 10, 10
+                markup: True
+        StyledButton:
+            text: "Start Over"
+            on_press: app.reset_app()
