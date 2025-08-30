@@ -38,6 +38,11 @@ Higher scores indicate better balance across the five dimensions.
 Personalized tips are generated based on low or high values in each metric.
 
 ## 🎥 Demo  
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](<Screenshot 2025-08-30 202104.png>)
+
+
 
 
 
