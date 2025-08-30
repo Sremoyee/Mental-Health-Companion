@@ -16,7 +16,7 @@ The app calculates wellness as:
 
 Wellness Score
 =
-Mood
+[Mood
 +
 (
 10
@@ -28,7 +28,7 @@ Sleep
 +
 Energy
 +
-Social/
+Social]/
 5
 
 
